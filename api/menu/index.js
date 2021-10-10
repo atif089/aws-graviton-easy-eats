@@ -25,8 +25,14 @@ const output = [
   },
 ]
 
+const notionService = require('../../service/notion')
+// await getMenu()
+
 router.use('/menu', (req, res) => {
-  res.end(JSON.stringify(output))
+  // notionService.getMenu;
+  notionService.getMenu().then((data) => {
+    res.end(JSON.stringify(data))
+  })
 })
 
 module.exports = router

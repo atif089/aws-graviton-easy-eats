@@ -16,7 +16,7 @@ export default {
     ]
   },
 
-  // 
+  // API Routes
   serverMiddleware: {
     '/api': '~/api'
   },

@@ -10,7 +10,7 @@
 export default {
   async asyncData({ store }) {
     await store.dispatch('getMenu')
-    const menu = store.state.menu.filter((item) => item.tags.includes('new'))
+    const menu = store.state.menu.filter((item) => item.tags.includes('Main Course'))
     return { menu }
   },
 }

@@ -2,6 +2,7 @@ const express = require('express')
 const app = express()
 
 const menu = require('./menu')
+
 app.use(menu)
 
 if (require.main === module) {
