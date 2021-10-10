@@ -10,7 +10,7 @@ export const mutations = {
 
 export const actions = {
   async getMenu({ commit }) {
-    const response = await this.$axios.$get('http://localhost:8000/menu')
+    const response = await this.$axios.$get('/api/menu')
     commit('SET_MENU', response)
   },
 }
