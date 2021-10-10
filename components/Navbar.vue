@@ -1,0 +1,104 @@
+<template>
+  <div>
+    <header class="text-gray-300 body-font">
+      <div
+        class="
+          container
+          mx-auto
+          flex flex-wrap
+          p-5
+          flex-col
+          md:flex-row
+          items-center
+        "
+      >
+        <a
+          class="
+            flex
+            title-font
+            font-medium
+            items-center
+            text-gray-300
+            mb-4
+            md:mb-0
+          "
+        >
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            fill="none"
+            stroke="currentColor"
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            class="w-10 h-10 text-white p-2 bg-indigo-600 rounded-full"
+            viewBox="0 0 24 24"
+          >
+            <path
+              d="M12 2L2 7l10 5 10-5-10-5zM2 17l10 5 10-5M2 12l10 5 10-5"
+            ></path>
+          </svg>
+          <span class="ml-3 text-2xl"
+            >Easy<span class="text-indigo-400">Eats</span>.</span
+          >
+        </a>
+        <nav
+          class="
+            md:ml-auto
+            flex flex-wrap
+            items-center
+            text-base
+            justify-center
+          "
+        >
+          <NuxtLink to="/" class="mr-5 hover:text-indigo-500"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-auto"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                d="M10.707 2.293a1 1 0 00-1.414 0l-7 7a1 1 0 001.414 1.414L4 10.414V17a1 1 0 001 1h2a1 1 0 001-1v-2a1 1 0 011-1h2a1 1 0 011 1v2a1 1 0 001 1h2a1 1 0 001-1v-6.586l.293.293a1 1 0 001.414-1.414l-7-7z"
+              /></svg
+          ></NuxtLink>
+          <NuxtLink to="/cart" class="mr-5 hover:text-indigo-500"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-auto"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
+                clip-rule="evenodd"
+              /></svg
+          ></NuxtLink>
+          <NuxtLink to="/profile" class="mr-5 hover:text-indigo-500"
+            ><svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="h-8 w-auto"
+              viewBox="0 0 20 20"
+              fill="currentColor"
+            >
+              <path
+                fill-rule="evenodd"
+                d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
+                clip-rule="evenodd"
+              /></svg
+          ></NuxtLink>
+        </nav>
+      </div>
+    </header>
+  </div>
+</template>
+
+<script>
+export default {}
+</script>
+
+<style scoped>
+a.nuxt-link-exact-active {
+  @apply bg-gray-800 rounded-lg p-2 text-indigo-500;
+}
+</style>
