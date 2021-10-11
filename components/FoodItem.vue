@@ -3,16 +3,19 @@
     :to="'/' + item.id"
     class="group cursor-pointer bg-gray-800 p-3 rounded-lg"
   >
-    <div class="">
+    <div class="flex md:block">
       <div
         class="
           relative
           thumbnail
           overflow-hidden
-          h-48
-          w-full
+          h-auto
+          md:h-48
+          w-48
+          md:w-full
           rounded-lg
           object-cover
+
         "
       >
         <img

@@ -1,26 +1,8 @@
 <template>
   <div class="container mx-auto">
-    <div class="my-4">
-      <button @click="$router.back()">
-        <svg
-          xmlns="http://www.w3.org/2000/svg"
-          class="h-10 w-auto"
-          fill="none"
-          viewBox="0 0 24 24"
-          stroke="currentColor"
-        >
-          <path
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="M7 16l-4-4m0 0l4-4m-4 4h18"
-          />
-        </svg>
-      </button>
-    </div>
-    <div class="flex gap-8">
+    <div class="flex items-stretch gap-8">
       <div
-        class="thumbnail flex-grow w-96 transform rounded-lg overflow-hidden"
+        class="thumbnail flex-grow max-w-2xl transform rounded-lg overflow-hidden"
       >
         <img
           :src="
@@ -31,7 +13,7 @@
           alt=""
         />
       </div>
-      <div class="info flex-grow">
+      <div class="info min-h-full">
         <h4 class="category flex flex-wrap gap-2">
           <span
             v-for="tag in foodItem.item_tags"
@@ -47,19 +29,29 @@
           quasi cumque vitae non, ullam delectus fugit ducimus, laborum quae
           odit. Provident, repellat quos.
         </p>
-        <button
-          class="
+        <div class="mt-4">
+          <small class="pb-2 inline-block text-gray-300">Quantity:</small>
+          <QuantityCounter @quantity="updateQuantity" />
+        </div>
+        <div class="mt-6">
+          <button
+            class="
+            
             bg-indigo-700
             text-xl
             px-4
             py-2
             rounded-lg
-            my-6
+            inline-block
+            
             hover:bg-indigo-800
           "
-        >
-          Taste it for <span class="font-bold">${{ foodItem.item_price }}</span>
-        </button>
+            @click="addToCart"
+          >
+            Taste it for
+            <span class="font-semibold">${{ foodItem.item_price }}</span>
+          </button>
+        </div>
       </div>
     </div>
   </div>
@@ -72,6 +64,23 @@ export default {
     const foodItem = await store.state.menu.find(item => item.id === params.id)
 
     return { foodItem }
+  },
+  data() {
+    return {
+      item: {
+        item_id: this.$route.params.id,
+        quantity: 1
+      }
+    }
+  },
+  methods: {
+    async addToCart() {
+      await this.$store.dispatch('addToCart', this.item)
+      this.$router.push({ name: 'Cart' })
+    },
+    updateQuantity(quantity) {
+      this.item.quantity = quantity
+    }
   }
 }
 </script>

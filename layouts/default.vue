@@ -26,7 +26,7 @@ body {
   opacity: 0;
 }
 .submenu a {
-  @apply cursor-pointer border-b-2 border-transparent pb-0.5 hover:border-indigo-400 hover:text-white transition;
+  @apply cursor-pointer border-b border-transparent pb-0.5 hover:border-indigo-500 hover:text-white transition;
 }
 
 .submenu a.nuxt-link-exact-active {
