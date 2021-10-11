@@ -14,7 +14,7 @@
       "
     >
       <NuxtLink to="/">New</NuxtLink>
-      <NuxtLink to="/topselling">Top Selling</NuxtLink>
+      <NuxtLink to="/bestselling">Best Selling</NuxtLink>
       <NuxtLink to="/maincourse">Main Course</NuxtLink>
       <NuxtLink to="/new">Nearby</NuxtLink>
       <NuxtLink to="/best">Best Sellers</NuxtLink>

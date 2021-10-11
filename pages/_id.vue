@@ -1,15 +1,40 @@
 <template>
-  <div>
+  <div class="container mx-auto">
+    <div class="my-4">
+      <button @click="$router.back()">
+        <svg
+          xmlns="http://www.w3.org/2000/svg"
+          class="h-10 w-auto"
+          fill="none"
+          viewBox="0 0 24 24"
+          stroke="currentColor"
+        >
+          <path
+            stroke-linecap="round"
+            stroke-linejoin="round"
+            stroke-width="2"
+            d="M7 16l-4-4m0 0l4-4m-4 4h18"
+          />
+        </svg>
+      </button>
+    </div>
     <div class="flex gap-8">
       <div
         class="thumbnail flex-grow w-96 transform rounded-lg overflow-hidden"
       >
-        <img :src="foodItem.item_image" class="h-full w-full" alt="" />
+        <img
+          :src="
+            foodItem.item_image ||
+              'https://foodish-api.herokuapp.com/images/pasta/pasta27.jpg'
+          "
+          class="h-full w-full"
+          alt=""
+        />
       </div>
       <div class="info flex-grow">
         <h4 class="category flex flex-wrap gap-2">
           <span
-            v-for="tag in foodItem.tags"
+            v-for="tag in foodItem.item_tags"
             :key="tag"
             class="bg-indigo-700 px-3 rounded-2xl inline-block"
             >{{ tag }}</span
@@ -42,13 +67,12 @@
 
 <script>
 export default {
+  layout: 'SelectedItem',
   async asyncData({ params, store }) {
-    const foodItem = await store.state.menu.find(
-      (item) => item.item_id === params.id
-    )
+    const foodItem = await store.state.menu.find(item => item.id === params.id)
 
     return { foodItem }
-  },
+  }
 }
 </script>
 

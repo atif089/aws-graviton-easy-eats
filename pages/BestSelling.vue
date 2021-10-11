@@ -10,9 +10,11 @@
 export default {
   async asyncData({ store }) {
     const menu = await store.state.menu.filter(item =>
-      item.item_tags.includes('Main Course')
+      item.item_tags.includes('Best Selling')
     )
     return { menu }
   }
 }
 </script>
+
+<style></style>

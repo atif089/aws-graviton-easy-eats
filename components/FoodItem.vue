@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    :to="'/' + item.item_id"
+    :to="'/' + item.id"
     class="group cursor-pointer bg-gray-800 p-3 rounded-lg"
   >
     <div class="">
@@ -16,7 +16,10 @@
         "
       >
         <img
-          :src="item.item_image"
+          :src="
+            item.item_image ||
+              'https://foodish-api.herokuapp.com/images/pasta/pasta27.jpg'
+          "
           class="
             h-full
             w-full
@@ -93,7 +96,7 @@
 
 <script>
 export default {
-  props: ['item'],
+  props: ['item']
 }
 </script>
 
