@@ -9,11 +9,7 @@
 </template>
 
 <script>
-export default {
-  async created() {
-    await this.$router.push('/Main Course')
-  }
-}
+export default {}
 </script>
 
 <style>

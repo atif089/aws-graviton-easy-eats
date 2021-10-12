@@ -1,6 +1,7 @@
 export const state = () => ({
   menu: [],
-  cart: []
+  cart: [],
+  order: []
 })
 
 export const mutations = {
