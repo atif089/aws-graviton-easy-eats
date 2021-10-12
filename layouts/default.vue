@@ -9,7 +9,11 @@
 </template>
 
 <script>
-export default {}
+export default {
+  async created() {
+    await this.$router.push('/Main Course')
+  }
+}
 </script>
 
 <style>
@@ -24,12 +28,5 @@ body {
 .home-enter,
 .home-leave-active {
   opacity: 0;
-}
-.submenu a {
-  @apply cursor-pointer border-b border-transparent pb-0.5 hover:border-indigo-500 hover:text-white transition;
-}
-
-.submenu a.nuxt-link-exact-active {
-  @apply border-b-2 border-indigo-400 text-white;
 }
 </style>

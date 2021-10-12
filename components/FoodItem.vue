@@ -1,6 +1,6 @@
 <template>
   <NuxtLink
-    :to="'/' + item.id"
+    :to="$nuxt.$route.params.category + '/' + item.id"
     class="group cursor-pointer bg-gray-800 p-3 rounded-lg"
   >
     <div class="flex md:block">
@@ -53,6 +53,7 @@
             ml-4
             bg-gray-700 bg-opacity-70
             hover:bg-opacity-100
+            focus:bg-opacity-100
             absolute
             top-2
             right-2

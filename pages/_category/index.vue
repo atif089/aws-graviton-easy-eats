@@ -8,13 +8,12 @@
 
 <script>
 export default {
-  async asyncData({ store }) {
+  async asyncData({ store, params }) {
     const menu = await store.state.menu.filter(item =>
-      item.item_tags.includes('Best Selling')
+      item.item_tags.includes(params.category)
     )
+
     return { menu }
   }
 }
 </script>
-
-<style></style>
