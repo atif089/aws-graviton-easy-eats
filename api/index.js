@@ -1,9 +1,13 @@
 const express = require('express')
 const app = express()
 
-const menu = require('./menu')
+const menuRoute = require('./menu')
+const orderRoute = require('./order')
 
-app.use(menu)
+app.use(express.json())
+
+app.use(menuRoute)
+app.use(orderRoute)
 
 if (require.main === module) {
   const port = 3001
