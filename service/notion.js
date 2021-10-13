@@ -97,9 +97,31 @@ async function submitOrderAsync(orderParams) {
   return orderPage
 }
 
+async function getOrder(orderId) {
+  const dbResponse = await notion.pages.retrieve({
+    page_id: orderId
+  })
+
+  if (dbResponse.object !== 'page') {
+    return false
+  }
+
+  const orderData = {
+    status: dbResponse.properties.Status.select.name || 'Pending',
+    billing_name: dbResponse.properties?.billing_name?.title[0]?.plain_text,
+    phone_number: dbResponse.properties?.phone_number?.rich_text[0]?.plain_text,
+    delivery_coordinates:
+      dbResponse.properties?.delivery_coordinates?.rich_text[0]?.plain_text,
+    order_data_extrapolated:
+      dbResponse.properties?.order_data_extrapolated?.rich_text[0]?.plain_text
+  }
+
+  return orderData
+}
+
 getDbIdsAsync()
 
-module.exports = { getDbIdsAsync, getMenu, submitOrderAsync }
+module.exports = { getDbIdsAsync, getMenu, getOrder, submitOrderAsync }
 
 async function setupDbAsync() {
   ;(async () => {
