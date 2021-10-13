@@ -11,9 +11,14 @@
         mx-auto
         text-gray-400
         border-b border-gray-800
+        whitespace-nowrap
+        overflow-x-auto
       "
     >
-      <NuxtLink v-for="tag in tags" :key="tag" :to="tag">{{ tag }}</NuxtLink>
+      <NuxtLink to="/">{{ tags.slice(0, 1)[0] }}</NuxtLink>
+      <NuxtLink v-for="tag in tags.slice(1)" :key="tag" :to="tag">{{
+        tag
+      }}</NuxtLink>
     </nav>
   </div>
 </template>

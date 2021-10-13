@@ -1,8 +1,8 @@
 <template>
   <div class="container mx-auto">
-    <div class="flex items-stretch gap-8">
+    <div class="md:flex items-stretch gap-8">
       <div
-        class="thumbnail flex-grow max-w-2xl max-h-96 transform rounded-lg overflow-hidden"
+        class="thumbnail flex-grow max-w-2xl h-48 md:h-auto max-h-96 transform rounded-lg overflow-hidden"
       >
         <img
           :src="
@@ -13,7 +13,7 @@
           alt=""
         />
       </div>
-      <div class="info min-h-full">
+      <div class="info min-h-full mt-8 md:mt-0">
         <h4 class="category flex flex-wrap gap-2">
           <span
             v-for="tag in foodItem.item_tags"

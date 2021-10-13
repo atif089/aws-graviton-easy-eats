@@ -13,7 +13,7 @@
         "
       >
         <NuxtLink
-          to="/Main Course"
+          to="/"
           class="
             flex
             title-font
@@ -54,7 +54,9 @@
           <NuxtLink
             to="/"
             :class="
-              $route.path == 'category' ? 'text-indigo-500 bg-gray-800' : ''
+              $route.path == '/' || $route.params.category
+                ? 'text-indigo-500 bg-gray-800'
+                : ''
             "
             ><svg
               xmlns="http://www.w3.org/2000/svg"
@@ -68,7 +70,12 @@
           ></NuxtLink>
           <NuxtLink
             to="/Cart"
-            :class="$route.path == '/Cart' ? 'text-indigo-500 bg-gray-800' : ''"
+            :class="
+              $route.path == '/Cart' ||
+              $route.path == '/status/' + $route.params.id
+                ? 'text-indigo-500 bg-gray-800'
+                : ''
+            "
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-8 w-auto"

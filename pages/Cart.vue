@@ -1,6 +1,6 @@
 <template>
-  <div class="flex gap-8 mt-4">
-    <div class="w-2/5">
+  <div class="md:flex gap-8 mt-4">
+    <div class="md:w-2/5">
       <h1 class="text-2xl mb-1">Order Details</h1>
       <small class="text-gray-500 block mb-8"
         >*Please fill order details below to place order.</small
@@ -60,14 +60,14 @@
         >
       </h1>
       <div
-        v-for="item in cartItems"
+        v-for="(item, index) in cartItems"
         :key="item.id"
         class="flex items-center gap-8 text-2xl mb-8 py-2"
       >
         <img
           :src="
             item.item_image ||
-            'https://foodish-api.herokuapp.com/images/pasta/pasta23.jpg'
+              'https://foodish-api.herokuapp.com/images/pasta/pasta23.jpg'
           "
           class="h-20 w-20 rounded-full object-cover"
           alt=""
@@ -81,10 +81,12 @@
               mb-4
               bg-gray-800
               text-indigo-300
+              hover:text-indigo-500
               rounded-lg
               p-2
               text-xl
             "
+            @click="removeItem(index)"
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -117,7 +119,7 @@
         "
       >
         <button
-          class="px-4 py-2 rounded-lg text-xl"
+          class="px-4 py-2 rounded-lg text-xl flex gap-2 items-center"
           :class="
             canUserSubmit
               ? 'bg-indigo-800 hover:bg-indigo-700 cursor-pointer'
@@ -125,6 +127,12 @@
           "
           @click="placeOrder"
         >
+          <img
+            v-if="loading"
+            src="@/static/loader.gif"
+            class="h-7 w-7"
+            alt=""
+          />
           Place Order
         </button>
         <h1 class="text-4xl py-4">
@@ -140,9 +148,9 @@ export default {
   layout: 'SelectedItem',
   async asyncData({ store }) {
     const state = await store.state
-    const cartItems = await state.cart.map((cartItem) => {
+    const cartItems = await state.cart.map(cartItem => {
       const itemExisted = state.menu.find(
-        (menuItem) => menuItem.id === cartItem.item_id
+        menuItem => menuItem.id === cartItem.item_id
       )
       return Object.assign(itemExisted, { quantity: cartItem.quantity })
     })
@@ -154,8 +162,9 @@ export default {
         billing_name: '',
         delivery_coordinates: '',
         phone_number: null,
-        order_data: '',
+        order_data: ''
       },
+      loading: false
     }
   },
   computed: {
@@ -174,26 +183,32 @@ export default {
         return true
       }
       return false
-    },
+    }
   },
+
   methods: {
     placeOrder() {
       if (!this.canUserSubmit) return false
+      this.loading = true
       this.$axios
         .post('/api/order', {
           ...this.order,
-          order_data: this.$store.state.cart,
+          order_data: this.$store.state.cart
         })
-        .then((data) => {
-          this.$router.push({ name: 'Order' })
+        .then(data => {
+          console.log(data)
+          this.$router.push('/status/' + data.data.id)
         })
+    },
+    removeItem(index) {
+      this.cartItems.splice(index, 1)
+      this.$store.dispatch('removeCartItem', index)
     },
     validateTelephone(tel) {
-      const regex =
-        /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/
+      const regex = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/
       return regex.test(tel)
-    },
-  },
+    }
+  }
 }
 </script>
 

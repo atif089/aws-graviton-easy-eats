@@ -8,12 +8,14 @@
 
 <script>
 export default {
-  async asyncData({ store, params }) {
+  async asyncData({ store }) {
     const menu = await store.state.menu.filter(item =>
-      item.item_tags.includes(params.category)
+      item.item_tags.includes('Main Course')
     )
 
     return { menu }
   }
 }
 </script>
+
+<style></style>

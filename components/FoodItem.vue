@@ -3,15 +3,15 @@
     :to="$nuxt.$route.params.category + '/' + item.id"
     class="group cursor-pointer bg-gray-800 p-3 rounded-lg"
   >
-    <div class="flex md:block">
+    <div>
       <div
         class="
           relative
           thumbnail
           overflow-hidden
-          h-auto
+          h-36
           md:h-48
-          w-48
+          w-full
           md:w-full
           rounded-lg
           object-cover

@@ -3,7 +3,7 @@
     <Navbar />
     <SubMenu />
     <transition name="home">
-      <Nuxt class="container mx-auto" />
+      <Nuxt class="container mx-auto px-2" />
     </transition>
   </div>
 </template>

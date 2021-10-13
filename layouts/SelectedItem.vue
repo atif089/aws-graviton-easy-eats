@@ -1,7 +1,7 @@
 <template>
   <div class="min-h-screen bg-gray-900 text-white">
     <Navbar />
-    <div class="container mx-auto">
+    <div class="container mx-auto px-2">
       <button
         class="p-2 mb-4 rounded-lg bg-gray-800 hover:text-indigo-600 transition duration-500"
         @click="$router.back()"
