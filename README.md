@@ -1,4 +1,4 @@
-# easy-eats
+# Easy Eats
 
 ## Demo 
 
@@ -6,12 +6,12 @@ http://ec2-35-85-230-91.us-west-2.compute.amazonaws.com/
 
 ## Install Instructions
 
-1. 
-1. Go to My Integrations on Notion and create a new integration. You should be able to get a secret key which looks like this ![image](https://user-images.githubusercontent.com/541359/137204345-8dfae852-bd54-4d30-8c73-09bc8bd7f4bd.png). Let's call it NOTION_ACCESS_TOKEN
-2. On the notion app, create an empty page and open in. In the URL you should see it's UUID which we need to install databases under that page. ![image](https://user-images.githubusercontent.com/541359/137204596-92493c1c-5e0e-430c-92d3-adf5e87cd311.png) Let's call it NOTION_PARENT_ID
-3. Clone this project in your preferred environent.
-4. In the docker-compose.yml file update the values for the NOTION_ACCESS_TOKEN and NOTION_PARENT_ID variables. ![Code_X6i5DYWEpd](https://user-images.githubusercontent.com/541359/137204968-3d869646-019f-4e21-b7ad-6478dd96d003.png)
-5. For managing the menu and orders, install Notion App on your phone or you can also use the web app https://www.notion.so/
+1. Create a Notion account.
+2. Go to My Integrations on Notion and when you create a new integration you should be able to get a secret key which looks like this ![image](https://user-images.githubusercontent.com/541359/137204345-8dfae852-bd54-4d30-8c73-09bc8bd7f4bd.png). Let's call it NOTION_ACCESS_TOKEN
+3. On the notion app, create an empty page and open in. In the URL you should see it's UUID which we need to install databases under that page. ![image](https://user-images.githubusercontent.com/541359/137204596-92493c1c-5e0e-430c-92d3-adf5e87cd311.png) Let's call it NOTION_PARENT_ID
+4. Clone this project in your preferred environent.
+5. In the docker-compose.yml file update the values for the NOTION_ACCESS_TOKEN and NOTION_PARENT_ID variables. ![Code_X6i5DYWEpd](https://user-images.githubusercontent.com/541359/137204968-3d869646-019f-4e21-b7ad-6478dd96d003.png)
+6. For managing the menu and orders, install Notion App on your phone or you can also use the web app https://www.notion.so/
 
 
 ## Inspiration
