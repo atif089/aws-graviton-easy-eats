@@ -76,6 +76,7 @@
                 ? 'text-indigo-500 bg-gray-800'
                 : ''
             "
+            class="relative"
             ><svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-8 w-auto"
@@ -86,8 +87,15 @@
                 fill-rule="evenodd"
                 d="M10 2a4 4 0 00-4 4v1H5a1 1 0 00-.994.89l-1 9A1 1 0 004 18h12a1 1 0 00.994-1.11l-1-9A1 1 0 0015 7h-1V6a4 4 0 00-4-4zm2 5V6a2 2 0 10-4 0v1h4zm-6 3a1 1 0 112 0 1 1 0 01-2 0zm7-1a1 1 0 100 2 1 1 0 000-2z"
                 clip-rule="evenodd"
-              /></svg
-          ></NuxtLink>
+              />
+            </svg>
+            <div
+              v-if="cartItemsLength > 0"
+              class="w-6 h-6 bg-indigo-500 text-gray-200 flex items-center justify-center rounded-full absolute top-0 right-0 transform translate-x-1 -translate-y-2"
+            >
+              {{ cartItemsLength }}
+            </div>
+          </NuxtLink>
 
           <button>
             <svg
@@ -112,7 +120,13 @@
 </template>
 
 <script>
-export default {}
+export default {
+  computed: {
+    cartItemsLength() {
+      return (this.$store.state.cart || []).length
+    }
+  }
+}
 </script>
 
 <style scoped>

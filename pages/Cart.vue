@@ -125,7 +125,7 @@
               ? 'bg-indigo-800 hover:bg-indigo-700 cursor-pointer'
               : 'bg-gray-800 cursor-not-allowed'
           "
-          @click="placeOrder"
+          @click.once="placeOrder"
         >
           <img
             v-if="loading"
@@ -196,8 +196,8 @@ export default {
           order_data: this.$store.state.cart
         })
         .then(data => {
-          console.log(data)
           this.$router.push('/status/' + data.data.id)
+          this.$store.dispatch('clearCart')
         })
     },
     removeItem(index) {

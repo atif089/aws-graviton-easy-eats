@@ -1,7 +1,6 @@
 export const state = () => ({
   menu: [],
-  cart: [],
-  order: []
+  cart: []
 })
 
 export const mutations = {
@@ -15,6 +14,9 @@ export const mutations = {
   },
   REMOVE_CART_ITEM(state, payload) {
     state.cart.splice(payload, 1)
+  },
+  CLEAR_CART(state) {
+    state.cart = []
   }
 }
 
@@ -28,5 +30,8 @@ export const actions = {
   },
   removeCartItem({ commit }, payload) {
     commit('REMOVE_CART_ITEM', payload)
+  },
+  clearCart({ commit }) {
+    commit('CLEAR_CART')
   }
 }

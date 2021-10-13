@@ -21,7 +21,9 @@
           />
         </svg>
       </button>
-      <Nuxt />
+      <transition name="home">
+        <Nuxt />
+      </transition>
     </div>
   </div>
 </template>
@@ -30,4 +32,13 @@
 export default {}
 </script>
 
-<style></style>
+<style>
+.home-enter-active,
+.home-leave-active {
+  transition: opacity 0.5s;
+}
+.home-enter,
+.home-leave-active {
+  opacity: 0;
+}
+</style>

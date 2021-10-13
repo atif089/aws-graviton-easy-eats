@@ -1,5 +1,5 @@
 <template>
-  <div class="h-screen w-screen bg-gray-100 flex items-center">
+  <div class="min-h-full w-screen bg-gray-800 flex items-center">
     <div
       class="
         container
@@ -8,7 +8,7 @@
         items-center
         justify-center
         px-5
-        text-gray-700
+        text-gray-400
       "
     >
       <div class="max-w-md">
@@ -35,10 +35,10 @@
             duration-150
             border border-transparent
             rounded-lg
-            focus:outline-none focus:shadow-outline-blue
-            bg-blue-600
-            active:bg-blue-600
-            hover:bg-blue-700
+            focus:outline-none focus:shadow-outline-indigo
+            bg-indigo-600
+            active:bg-indigo-400
+            hover:bg-indigo-400
           "
           >back to homepage</NuxtLink
         >

@@ -76,13 +76,16 @@
         </button>
       </div>
 
-      <div class="flex justify-between items-center mt-4">
+      <div class="md:flex justify-between items-center mt-2 md:mt-4">
         <div>
           <h1>{{ item.item_name }}</h1>
           <small class="text-gray-400">Burger King</small>
         </div>
         <p
           class="
+            mt-2
+            md:mt-0
+            inline-block
             bg-indigo-700
             group-hover:bg-indigo-600
             transition
