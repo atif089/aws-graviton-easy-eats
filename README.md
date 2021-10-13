@@ -1,6 +1,63 @@
 # easy-eats
 
-## Build Setup
+## Demo 
+
+http://ec2-35-85-230-91.us-west-2.compute.amazonaws.com/
+
+## Install Instructions
+
+1. 
+1. Go to My Integrations on Notion and create a new integration. You should be able to get a secret key which looks like this ![image](https://user-images.githubusercontent.com/541359/137204345-8dfae852-bd54-4d30-8c73-09bc8bd7f4bd.png). Let's call it NOTION_ACCESS_TOKEN
+2. On the notion app, create an empty page and open in. In the URL you should see it's UUID which we need to install databases under that page. ![image](https://user-images.githubusercontent.com/541359/137204596-92493c1c-5e0e-430c-92d3-adf5e87cd311.png) Let's call it NOTION_PARENT_ID
+3. Clone this project in your preferred environent.
+4. In the docker-compose.yml file update the values for the NOTION_ACCESS_TOKEN and NOTION_PARENT_ID variables. ![Code_X6i5DYWEpd](https://user-images.githubusercontent.com/541359/137204968-3d869646-019f-4e21-b7ad-6478dd96d003.png)
+5. For managing the menu and orders, install Notion App on your phone or you can also use the web app https://www.notion.so/
+
+
+## Inspiration
+
+Covid-19 brought tremendous change to the world. One of the biggest changes was in the way we work. While a lot of workers and businesses were displaced it also brought a trend of new businesses being created. One such business is food delivery.
+
+Food delivery is a great business to start from home with a low barrier to entry. The SaaS based enablers however charge fees as high as 30% of the order thus making it less lucrative for the business owners. We made Easy Eats to help these small business owners.
+
+## What it does
+
+Easy eats is a self hosted solution that allows businesses to easily start their own online order taking platform where they can manage their menu and accept orders online.
+
+It's free to use, completely open source, can take hundreds of orders in a month and costs less than $3 a month to maintain using AWS Graviton compute instances.
+
+## How we built it
+
+Built on top of Notion API serving as the backend and database for handling menu and orders, we used Vue and Nuxt JS to build middleware and frontend on Nuxt JS.
+
+## Challenges we ran into
+
+Most of the challenges were around Notion API. We used this API due to lack of time in building a full fledge backend admistration area for the owner.
+
+The Notion API is currently incomplete which has prevented us from creating a 1-click bootstrapper for installing the server. The user now has to perform a few manual steps to start their store.
+
+The Notion API can always be replaced by any database or a proper CRUD app like Django or Laravel.
+
+## Accomplishments that we're proud of
+
+We wanted to establish a few things which we were successful and proud of
+
+1. Notion API can be used as a database eliminating the need of spending tens of hours in building a custom backend for MVP
+2. End to End flow of users being able to see the menu and picking the items and their quantities to create a cart and order it
+3. The product can run on minimal specs like T4G compute instances
+
+## What we learned
+
+We learned how to build a backend for a self hosted product on top of Notion API and deploy it using docker. We also learned how to build a product from scratch without spending a great deal of time on it.
+
+## What's next for Easy Eats
+
+1. Fix any UI bugs
+2. Add some features like taking user's location on the map
+3. Replace Notion API with a hosted database like SQLite therefore packing the whole application into a small monolith docker container.
+
+
+## Build Setup (Nuxt)
 
 ```bash
 # install dependencies
