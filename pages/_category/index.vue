@@ -1,6 +1,8 @@
 <template>
   <div>
-    <div class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+    <div
+      class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-3 md:gap-4 lg:gap-6"
+    >
       <FoodItem v-for="item in menu" :key="item.id" :item="item" />
     </div>
   </div>

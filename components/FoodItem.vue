@@ -79,7 +79,7 @@
       <div class="md:flex justify-between items-center mt-2 md:mt-4">
         <div>
           <h1>{{ item.item_name }}</h1>
-          <small class="text-gray-400">Burger King</small>
+          <small class="text-gray-400 hidden md:block">Burger King</small>
         </div>
         <p
           class="

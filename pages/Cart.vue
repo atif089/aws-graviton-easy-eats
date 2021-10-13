@@ -62,7 +62,7 @@
       <div
         v-for="(item, index) in cartItems"
         :key="item.id"
-        class="flex items-center gap-8 text-2xl mb-8 py-2"
+        class="flex items-center gap-4 md:gap-8 text-2xl mb-8 py-2"
       >
         <img
           :src="
@@ -135,7 +135,7 @@
           />
           Place Order
         </button>
-        <h1 class="text-4xl py-4">
+        <h1 class="text-2xl md:text-4xl py-4">
           Total: <span class="text-indigo-500 pl-2">${{ total }}</span>
         </h1>
       </div>

@@ -5,14 +5,15 @@
         submenu
         container
         flex
+        flex-wrap
         justify-center
-        gap-8
+        gap-3
+        md:gap-8
         my-8
         mx-auto
         text-gray-400
         border-b border-gray-800
-        whitespace-nowrap
-        overflow-x-auto
+       
       "
     >
       <NuxtLink to="/">{{ tags.slice(0, 1)[0] }}</NuxtLink>

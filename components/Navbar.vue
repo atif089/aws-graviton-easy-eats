@@ -97,7 +97,7 @@
             </div>
           </NuxtLink>
 
-          <button>
+          <button @click="search">
             <svg
               xmlns="http://www.w3.org/2000/svg"
               class="h-8 w-auto"
@@ -124,6 +124,11 @@ export default {
   computed: {
     cartItemsLength() {
       return (this.$store.state.cart || []).length
+    }
+  },
+  methods: {
+    search() {
+      this.$router.push({ name: 'index' })
     }
   }
 }
