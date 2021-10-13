@@ -12,7 +12,21 @@
           v-model="order.billing_name"
           required
           type="text"
-          class="w-full block mb-8 max-w-sm px-2 py-1 text-gray-800 rounded-lg text-2xl focus:border-none focus:outline-none focus:ring-2 ring-indigo-600"
+          class="
+            w-full
+            block
+            mb-8
+            max-w-sm
+            px-2
+            py-1
+            text-gray-800
+            rounded-lg
+            text-2xl
+            focus:border-none
+            focus:outline-none
+            focus:ring-2
+            ring-indigo-600
+          "
         />
         <label for="tel" class="pb-2">Phone Number:</label>
         <input
@@ -20,11 +34,33 @@
           v-model="order.phone_number"
           required
           type="tel"
-          class="w-full block mb-8 max-w-sm px-2 py-1 text-gray-800 rounded-lg text-2xl focus:border-none focus:outline-none focus:ring-2 ring-indigo-600"
+          class="
+            w-full
+            block
+            mb-8
+            max-w-sm
+            px-2
+            py-1
+            text-gray-800
+            rounded-lg
+            text-2xl
+            focus:border-none
+            focus:outline-none
+            focus:ring-2
+            ring-indigo-600
+          "
         />
         <input
           type="submit"
-          class="bg-indigo-800 px-4 py-2 rounded-lg cursor-pointer text-xl hover:bg-indigo-700"
+          class="
+            bg-indigo-800
+            px-4
+            py-2
+            rounded-lg
+            cursor-pointer
+            text-xl
+            hover:bg-indigo-700
+          "
         />
       </form>
     </div>
@@ -43,7 +79,7 @@
         <img
           :src="
             item.item_image ||
-              'https://foodish-api.herokuapp.com/images/pasta/pasta23.jpg'
+            'https://foodish-api.herokuapp.com/images/pasta/pasta23.jpg'
           "
           class="h-20 w-20 rounded-full object-cover"
           alt=""
@@ -52,7 +88,15 @@
         <h1>{{ item.item_name }}</h1>
         <div class="ml-auto flex flex-col">
           <button
-            class="ml-auto mb-4 bg-gray-800 text-indigo-300 rounded-lg p-2 text-xl"
+            class="
+              ml-auto
+              mb-4
+              bg-gray-800
+              text-indigo-300
+              rounded-lg
+              p-2
+              text-xl
+            "
           >
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -74,7 +118,15 @@
       </div>
       <div
         v-if="cartItems.length > 0"
-        class="!mt-8 flex items-center justify-between !border-t-2 border-dashed !border-gray-600"
+        class="
+          !mt-8
+          flex
+          items-center
+          justify-between
+          !border-t-2
+          border-dashed
+          !border-gray-600
+        "
       >
         <button
           class="px-4 py-2 rounded-lg text-xl"
@@ -87,7 +139,7 @@
         >
           Place Order
         </button>
-        <h1 class="text-4xl py-4 ">
+        <h1 class="text-4xl py-4">
           Total: <span class="text-indigo-500 pl-2">${{ total }}</span>
         </h1>
       </div>
@@ -100,9 +152,9 @@ export default {
   layout: 'SelectedItem',
   async asyncData({ store }) {
     const state = await store.state
-    const cartItems = await state.cart.map(cartItem => {
+    const cartItems = await state.cart.map((cartItem) => {
       const itemExisted = state.menu.find(
-        menuItem => menuItem.id === cartItem.item_id
+        (menuItem) => menuItem.id === cartItem.item_id
       )
       return Object.assign(itemExisted, { quantity: cartItem.quantity })
     })
@@ -114,9 +166,9 @@ export default {
         billing_name: '',
         delivery_coordinates: '',
         phone_number: null,
-        order_data: ''
+        order_data: '',
       },
-      validUser: false
+      validUser: false,
     }
   },
   computed: {
@@ -125,7 +177,7 @@ export default {
         (acc, val) => acc + val.item_price * val.quantity,
         0
       )
-    }
+    },
   },
   methods: {
     saveUserDetails() {
@@ -136,17 +188,19 @@ export default {
 
     async placeOrder() {
       if (this.validUser) {
-        await this.$axios.post('http://localhost:3000/api/order', {
-          ...this.order
+        await this.$axios.post('/api/order', {
+          ...this.order,
+          order_data: this.$store.state.cart,
         })
         this.$router.push({ name: 'Order' })
       }
     },
     validateTelephone(tel) {
-      const regex = /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/
+      const regex =
+        /^\s*(?:\+?(\d{1,3}))?[-. (]*(\d{3})[-. )]*(\d{3})[-. ]*(\d{4})(?: *x(\d+))?\s*$/
       return regex.test(tel)
-    }
-  }
+    },
+  },
 }
 </script>
 
