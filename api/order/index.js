@@ -9,7 +9,7 @@ router.use('/order/:orderId', (req, res) => {
     .then(data => {
       res.end(JSON.stringify(data))
     })
-    .catch(err => {
+    .catch(() => {
       res.end(JSON.stringify('{}'))
     })
 })
