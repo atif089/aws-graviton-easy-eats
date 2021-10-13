@@ -3,10 +3,15 @@ const router = Router()
 
 const notionService = require('../../service/notion')
 
-router.use('/getorder', (req, res) => {
-  notionService.getOrder('5c8a01f6922447439c40195a7fd1fe25').then(data => {
-    res.end(JSON.stringify(data))
-  })
+router.use('/order/:orderId', (req, res) => {
+  notionService
+    .getOrder(req.params.orderId)
+    .then(data => {
+      res.end(JSON.stringify(data))
+    })
+    .catch(err => {
+      res.end(JSON.stringify('{}'))
+    })
 })
 
 router.use('/order', (req, res) => {
