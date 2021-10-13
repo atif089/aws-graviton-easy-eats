@@ -3,9 +3,13 @@ const router = Router()
 
 const notionService = require('../../service/notion')
 
-router.use('/order', (req, res) => {
-  req.body
+router.use('/getorder', (req, res) => {
+  notionService.getOrder('5c8a01f6922447439c40195a7fd1fe25').then(data => {
+    res.end(JSON.stringify(data))
+  })
+})
 
+router.use('/order', (req, res) => {
   const orderFromUser = {
     billing_name: req.body.billing_name,
     delivery_coordinates: req.body.delivery_coordinates,

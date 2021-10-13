@@ -107,7 +107,7 @@ async function getOrder(orderId) {
   }
 
   const orderData = {
-    status: dbResponse.properties.Status.select.name || 'Pending',
+    status: dbResponse.properties?.Status?.select?.name || 'Pending',
     billing_name: dbResponse.properties?.billing_name?.title[0]?.plain_text,
     phone_number: dbResponse.properties?.phone_number?.rich_text[0]?.plain_text,
     delivery_coordinates:
