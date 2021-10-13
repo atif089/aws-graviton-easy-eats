@@ -1,4 +1,4 @@
-<template>
+  <template>
   <div class="text-center">
     <svg
       xmlns="http://www.w3.org/2000/svg"
@@ -21,27 +21,34 @@
     <p class="text-gray-500 text-xl my-2">
       Order amount:
       <span class="text-gray-400"
-        >${{ orderStatus.data.order_data_extrapolated.slice(-2) }}
+        >${{ orderStatus.order_data_extrapolated.slice(-2) }}
       </span>
     </p>
     <p class="text-gray-500 text-xl">
       Order placed at:
       <span class="text-gray-400">{{
-        new Date(orderStatus.headers.date).toLocaleTimeString('en-US')
+        new Date(orderDate).toLocaleTimeString('en-US')
       }}</span>
     </p>
     <div class="status bg-gray-800 my-4 rounded-lg py-4 px-8 inline-block">
       <h3 class="text-2xl text-gray-500">Status:</h3>
-      <h1 class="text-4xl text-indigo-400">{{ orderStatus.data.status }}</h1>
+      <h1 class="text-4xl text-indigo-400">{{ orderStatus.status }}</h1>
     </div>
     <div>
       <NuxtLink
-        class="text-gray-400 hover:text-indigo-400 inline-flex items-center justify-center gap-2"
+        class="
+          text-gray-400
+          hover:text-indigo-400
+          inline-flex
+          items-center
+          justify-center
+          gap-2
+        "
         to="/"
       >
         <svg
           xmlns="http://www.w3.org/2000/svg"
-          class="h-9 w-auto "
+          class="h-9 w-auto"
           fill="none"
           viewBox="0 0 24 24"
           stroke="currentColor"
@@ -66,9 +73,11 @@ export default {
     const orderStatus = await $axios.get(
       'http://localhost:3000/api/order/' + route.params.id
     )
-
-    return { orderStatus }
-  }
+    return {
+      orderStatus: orderStatus.data,
+      orderDate: orderStatus.headers.date,
+    }
+  },
 }
 </script>
 
