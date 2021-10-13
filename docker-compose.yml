@@ -1,0 +1,11 @@
+version: "3.7"
+
+services:
+  easyeats:
+    build: .
+    image: easyeats
+    ports:
+      - "80:80"
+    environment:
+      - NOTION_ACCESS_TOKEN=
+      - NOTION_PARENT_ID=

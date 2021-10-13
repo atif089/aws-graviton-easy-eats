@@ -71,7 +71,7 @@ export default {
   layout: 'SelectedItem',
   async asyncData({ $axios, route }) {
     const orderStatus = await $axios.get(
-      'http://localhost:3000/api/order/' + route.params.id
+      '/api/order/' + route.params.id
     )
     return {
       orderStatus: orderStatus.data,
