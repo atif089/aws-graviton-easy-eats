@@ -5,7 +5,7 @@
       <small class="text-gray-500 block mb-8"
         >*Please fill order details below to place order.</small
       >
-      <form @submit.prevent="saveUserDetails">
+      <form>
         <label for="name" class="pb-2">Name:</label>
         <input
           id="name"
@@ -48,18 +48,6 @@
             focus:outline-none
             focus:ring-2
             ring-indigo-600
-          "
-        />
-        <input
-          type="submit"
-          class="
-            bg-indigo-800
-            px-4
-            py-2
-            rounded-lg
-            cursor-pointer
-            text-xl
-            hover:bg-indigo-700
           "
         />
       </form>
@@ -131,7 +119,7 @@
         <button
           class="px-4 py-2 rounded-lg text-xl"
           :class="
-            validUser
+            canUserSubmit
               ? 'bg-indigo-800 hover:bg-indigo-700 cursor-pointer'
               : 'bg-gray-800 cursor-not-allowed'
           "
@@ -168,7 +156,6 @@ export default {
         phone_number: null,
         order_data: '',
       },
-      validUser: false,
     }
   },
   computed: {
@@ -178,22 +165,28 @@ export default {
         0
       )
     },
+
+    canUserSubmit() {
+      if (
+        this.$store.state.cart.length > 0 &&
+        this.validateTelephone(this.order.phone_number)
+      ) {
+        return true
+      }
+      return false
+    },
   },
   methods: {
-    saveUserDetails() {
-      if (this.validateTelephone(this.order.phone_number)) {
-        this.validUser = true
-      }
-    },
-
-    async placeOrder() {
-      if (this.validUser) {
-        await this.$axios.post('/api/order', {
+    placeOrder() {
+      if (!this.canUserSubmit) return false
+      this.$axios
+        .post('/api/order', {
           ...this.order,
           order_data: this.$store.state.cart,
         })
-        this.$router.push({ name: 'Order' })
-      }
+        .then((data) => {
+          this.$router.push({ name: 'Order' })
+        })
     },
     validateTelephone(tel) {
       const regex =
